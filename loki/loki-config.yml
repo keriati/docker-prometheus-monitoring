@@ -28,6 +28,3 @@ schema_config:
 
 ruler:
   alertmanager_url: http://alertmanager:9093
-
-analytics:
-  reporting_enabled: false
