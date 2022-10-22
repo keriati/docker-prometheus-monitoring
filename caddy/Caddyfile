@@ -44,3 +44,7 @@ grafana.{$MON_DOMAIN}:3000 {
     }
     reverse_proxy grafana:3000
 }
+
+loki.{$MON_DOMAIN}:3100 {
+    reverse_proxy loki:3100
+}
