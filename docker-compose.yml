@@ -142,8 +142,6 @@ services:
       - loki_data:/data/loki
     command: -config.file=/etc/loki/loki-config.yml
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Europe/Vienna
     networks:
       - monitor-net
