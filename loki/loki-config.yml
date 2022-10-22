@@ -5,11 +5,10 @@ server:
   grpc_listen_port: 9096
 
 common:
-  path_prefix: /tmp/loki
   storage:
     filesystem:
-      chunks_directory: /tmp/loki/chunks
-      rules_directory: /tmp/loki/rules
+      chunks_directory: /data/loki/chunks
+      rules_directory: /data/loki/rules
   replication_factor: 1
   ring:
     instance_addr: 127.0.0.1
@@ -31,6 +30,6 @@ limits_config:
   ingestion_burst_size_mb: 1024
 
 ruler:
-  alertmanager_url: http://localhost:9093
+  alertmanager_url: http://alertmanager:9093
 
 reporting_enabled: false
