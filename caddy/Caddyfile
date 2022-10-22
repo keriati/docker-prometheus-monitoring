@@ -1,0 +1,46 @@
+prometheus.{$MON_DOMAIN}:9090 {
+    tls {$CLOUDFLARE_EMAIL} {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+    }
+    basicauth /* {
+        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
+    }
+    reverse_proxy prometheus:9090
+}
+
+alertmanager.{$MON_DOMAIN}:9093 {
+    tls {$CLOUDFLARE_EMAIL} {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+    }
+    basicauth /* {
+        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
+    }
+    reverse_proxy alertmanager:9093
+}
+
+cadvisor.{$MON_DOMAIN}:8888 {
+    tls {$CLOUDFLARE_EMAIL} {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+    }
+    basicauth /* {
+        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
+    }
+    reverse_proxy cadvisor:8080
+}
+
+pushgateway.{$MON_DOMAIN}:9091 {
+    tls {$CLOUDFLARE_EMAIL} {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+    }
+    basicauth /* {
+        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
+    }
+    reverse_proxy pushgateway:9091
+}
+
+grafana.{$MON_DOMAIN}:3000 {
+    tls {$CLOUDFLARE_EMAIL} {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+    }
+    reverse_proxy grafana:3000
+}

@@ -1,1 +1,3 @@
-# docker-prometheus-monitoring
+# Docker Prometheus Monitoring
+
+dockprom inspired prometheus monitoring
