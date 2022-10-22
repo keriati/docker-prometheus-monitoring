@@ -134,18 +134,26 @@ services:
 
   loki:
     image: grafana/loki:2.6.1
+    container_name: loki
     ports:
       - "3100:3100"
     volumes:
       - ${APP_DIR}/loki:/etc/loki
       - loki_data:/data/loki
     command: -config.file=/etc/loki/loki-config.yml
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Vienna
     networks:
       - monitor-net
     logging: *default-logging
+    labels:
+      org.label-schema.group: "monitoring"
 
   promtail:
     image: grafana/promtail:2.6.1
+    container_name: promtail
     ports:
       - "9080:9080"
     volumes:
@@ -153,9 +161,15 @@ services:
       - /var/log:/var/log:ro
       - ${APP_DIR}/loki:/etc/promtail
     command: -config.file=/etc/promtail/promtail-config.yml
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Vienna
     networks:
       - monitor-net
     logging: *default-logging
+    labels:
+      org.label-schema.group: "monitoring"
 
   caddy:
     image: slothcroissant/caddy-cloudflaredns:2.6.1
@@ -175,6 +189,7 @@ services:
       - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH:-JDJhJDE0JE91S1FrN0Z0VEsyWmhrQVpON1VzdHVLSDkyWHdsN0xNbEZYdnNIZm1pb2d1blg4Y09mL0ZP}
       - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
       - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - MON_DOMAIN=${MON_DOMAIN}
       - ACME_AGREE=true
     restart: unless-stopped
     networks:
