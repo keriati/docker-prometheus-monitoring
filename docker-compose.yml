@@ -156,6 +156,7 @@ services:
     container_name: promtail
     ports:
       - "9080:9080"
+      - "1514:1514"
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/log:/var/log:ro
@@ -180,6 +181,7 @@ services:
       - "9093:9093"
       - "9091:9091"
       - "8888:8888"
+      - "3100:3100"
     volumes:
       - ${APP_DIR}/caddy:/etc/caddy
       - caddy_data:/data
