@@ -10,7 +10,7 @@ networks:
 
 volumes:
   caddy_data: { }
-  loki_data: { }
+#  loki_data: { }
 #  prometheus_data: { }
 #  grafana_data: { }
 
@@ -135,12 +135,11 @@ services:
   loki:
     image: grafana/loki:2.6.1
     container_name: loki
-    user: "0"
     expose:
       - 3100
     volumes:
       - ${APP_DIR}/loki:/etc/loki
-      - loki_data:/tmp/loki
+#      - loki_data:/tmp/loki
     command: -config.file=/etc/loki/loki-config.yml
     environment:
       - TZ=Europe/Vienna
