@@ -133,7 +133,7 @@ services:
 
 
   loki:
-    image: grafana/loki:2.6.1
+    image: grafana/loki:2.4.0
     container_name: loki
     expose:
       - 3100
@@ -142,6 +142,8 @@ services:
 #      - loki_data:/tmp/loki
     command: -config.file=/etc/loki/loki-config.yml
     environment:
+      - PUID=10001
+      - PGID=10001
       - TZ=Europe/Vienna
     networks:
       - monitor-net
