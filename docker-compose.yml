@@ -156,7 +156,7 @@ services:
     container_name: promtail
     ports:
       - "9080:9080"
-      - "1514:1514"
+      - "1514:1514/udp"
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/log:/var/log:ro
