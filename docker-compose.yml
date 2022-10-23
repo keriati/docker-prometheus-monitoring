@@ -174,7 +174,7 @@ services:
       org.label-schema.group: "monitoring"
 
   syslog-ng:
-    image: lscr.io/linuxserver/syslog-ng:latest
+    image: lscr.io/linuxserver/syslog-ng:3.36.1
     container_name: syslog-ng
     environment:
       - PUID=1000
