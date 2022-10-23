@@ -183,8 +183,8 @@ services:
     volumes:
       - ${APP_DIR}/syslog-ng:/config
     ports:
-      - "5514:5514/udp"
-      - "6601:6601/tcp"
+      - "5514:514/udp"
+      - "6601:601/tcp"
       - "6514:6514/tcp"
     restart: unless-stopped
     networks:
