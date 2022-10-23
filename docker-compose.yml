@@ -168,9 +168,27 @@ services:
       - TZ=Europe/Vienna
     networks:
       - monitor-net
+    restart: unless-stopped
     logging: *default-logging
     labels:
       org.label-schema.group: "monitoring"
+
+  syslog-ng:
+    image: lscr.io/linuxserver/syslog-ng:latest
+    container_name: syslog-ng
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ${APP_DIR}/syslog-ng:/config
+    ports:
+      - "5514:5514/udp"
+      - "6601:6601/tcp"
+      - "6514:6514/tcp"
+    restart: unless-stopped
+    networks:
+      - monitor-net
 
   caddy:
     image: slothcroissant/caddy-cloudflaredns:2.6.1

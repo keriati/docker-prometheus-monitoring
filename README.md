@@ -1,9 +1,8 @@
 # Docker Prometheus Monitoring
 
-[Dockprom](https://github.com/stefanprodan/dockprom) inspired prometheus monitoring.
+[Dockprom](https://github.com/stefanprodan/dockprom) and [Loki Syslog AIO](https://github.com/lux4rd0/grafana-loki-syslog-aio) inspired prometheus monitoring.
 
 ## Additions:
-- Loki with promtail
 - Caddy with cloudflare dns
 - Exposed cAdvisor web interface
 - Environment variables based config
